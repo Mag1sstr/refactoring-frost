@@ -87,7 +87,14 @@ export default function ProductInfo() {
                   <p>г. Астана</p>
                   <p>г. Алматы</p>
                 </div>
-                <button className={styles.button}>Купить</button>
+                <button
+                  onClick={() => {
+                    location.reload();
+                  }}
+                  className={styles.button}
+                >
+                  Купить
+                </button>
               </div>
             </div>
             <Comments id={id} />
