@@ -1,0 +1,79 @@
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: 0.2s;
+  color: #000;
+}
+.form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 570px;
+  padding: 45px 50px;
+  background: #fff;
+}
+.open__modal {
+  opacity: 1;
+  visibility: visible;
+}
+/* form */
+.form h1 {
+  font-weight: 400;
+  font-size: 30px;
+  margin-bottom: 45px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  /* margin-bottom: 25px; */
+}
+.input {
+  width: 100%;
+  font-size: 18px;
+  padding: 8px 20px;
+  background: #f6f6f6;
+  border: 1px solid #d3d3d3;
+  outline: none;
+  margin-bottom: 25px;
+}
+.input:focus {
+  border: 1px solid #000;
+}
+.button {
+  cursor: pointer;
+  font-weight: 400;
+  padding: 13px 0;
+  width: 100%;
+  color: #fff;
+  background: #2156bd;
+  font-size: 18px;
+  border: none;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.exit {
+  padding: 18px 0;
+  background: transparent;
+  color: #989898;
+}
+
+.err {
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-size: 14px;
+}

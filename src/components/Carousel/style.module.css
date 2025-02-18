@@ -1,0 +1,32 @@
+.main {
+  position: relative;
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+}
+.window {
+  width: 100%;
+  overflow-x: hidden;
+}
+.banners__container {
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+.arrow__left {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  z-index: 100;
+}
+.arrow__right {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  z-index: 100;
+}

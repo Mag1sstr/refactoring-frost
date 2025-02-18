@@ -1,0 +1,87 @@
+.header {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+.row {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  cursor: pointer;
+}
+.contacts {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+.city {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.number {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.search {
+  min-width: 251px;
+  max-width: 355px;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  background-color: #474747;
+  border: 1px solid #6a6a6a;
+}
+.input {
+  width: 100%;
+  padding: 9px 18px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.searchImg {
+  width: 17px;
+  margin: 0px 13px;
+}
+.input::placeholder {
+  color: #989898;
+  font-size: 16px;
+  font-weight: 600;
+}
+.auth {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: end;
+  font-size: 16px;
+  color: #e4e4e4;
+  user-select: none;
+}
+.auth a:hover {
+  opacity: 0.9;
+}
+.cart {
+  position: relative;
+}
+.cart__circle {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #2156bd;
+  font-size: 14px;
+  font-weight: 600;
+}

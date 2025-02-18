@@ -1,0 +1,42 @@
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.drop {
+  position: relative;
+}
+.drop__items {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  margin-top: 10px;
+  transition: 0.2s;
+  z-index: 100;
+}
+.item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  width: 350px;
+  transition: 0.2s;
+  background: #f6f6f6;
+  border: 1px solid #d3d3d3;
+  font-weight: 600;
+}
+.drop.open .drop__items {
+  opacity: 1;
+  visibility: visible;
+  margin-top: -1px;
+}
+.drop__items .item {
+  font-weight: 400;
+  background: #fff;
+  margin-top: -1px;
+}
+.drop__items .item:hover {
+  padding-left: 14px;
+}
