@@ -24,12 +24,12 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app">
       <Header />
       <ToastContainer />
       <AppRoutes />
       <Footer />
-    </>
+    </div>
   );
 }
 
