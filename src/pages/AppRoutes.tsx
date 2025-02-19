@@ -6,11 +6,13 @@ import CreatingOrder from "./CreatingOrder/CreatingOrder";
 
 export default function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product/:id" element={<ProductInfo />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/basket" element={<CreatingOrder />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductInfo />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/basket" element={<CreatingOrder />} />
+      </Routes>
+    </>
   );
 }

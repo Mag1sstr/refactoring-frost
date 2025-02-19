@@ -21,6 +21,7 @@ export default function Products({ productData }: IProps) {
               id={item.id}
               name={item.name}
               price={item.price}
+              available={item.available}
             />
           );
         })}

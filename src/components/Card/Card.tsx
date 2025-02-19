@@ -8,12 +8,19 @@ interface IProps {
   id: number;
   name: string;
   price: number;
+  available: number;
 }
-export default function Card({ name, price, id }: IProps) {
+export default function Card({ name, price, id, available }: IProps) {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className={styles.card}>
-      <AddModal name={name} openModal={openModal} setOpenModal={setOpenModal} />
+      <AddModal
+        id={id}
+        available={available}
+        name={name}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
       <Link className={styles.link} to={`/product/${id}`}>
         <div style={{ textAlign: "center" }}>
           <img className={styles.image} src={stubImage} alt="" />

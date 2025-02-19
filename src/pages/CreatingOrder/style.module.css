@@ -60,3 +60,8 @@
 .stage:nth-child(4)::before {
   display: none;
 }
+
+.stages {
+  margin-top: 65px;
+  margin-bottom: 40px;
+}

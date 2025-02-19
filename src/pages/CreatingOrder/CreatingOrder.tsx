@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./style.module.css";
 import BasketStage from "../../components/BasketStage/BasketStage";
+import ContactsStage from "../../components/ContactsStage/ContactsStage";
 
 export default function Basket() {
   const [currentStage, setCurrentStage] = useState(0);
@@ -11,6 +12,7 @@ export default function Basket() {
     },
     {
       stage: "Контактные данные",
+      component: <ContactsStage />,
     },
     {
       stage: "Доставка",
@@ -27,6 +29,7 @@ export default function Basket() {
           <div className={styles.row}>
             {stages.map((item, i) => (
               <div
+                key={item.stage}
                 onClick={() => {
                   setCurrentStage(i);
                 }}
@@ -38,6 +41,11 @@ export default function Basket() {
               </div>
             ))}
           </div>
+        </div>
+        <div>
+          {stages.map((item, i) => (
+            <div>{i === currentStage && item.component}</div>
+          ))}
         </div>
       </div>
     </section>
