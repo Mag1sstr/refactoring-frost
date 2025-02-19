@@ -3,8 +3,106 @@
   padding: 65px 55px;
   border: 1px solid #e5e5e5;
   background-color: #fff;
+  margin-bottom: 30px;
 }
 .wrapper h2 {
   font-size: 24px;
   font-weight: 600;
+  margin-bottom: 40px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.row {
+  display: flex;
+  gap: 100px;
+}
+
+.products {
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 33px 0;
+  border-bottom: 1px solid #d3d3d3;
+}
+.name {
+  max-width: 720px;
+  width: 100%;
+}
+.name p {
+  margin-bottom: 20px;
+}
+.delete {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.delete span {
+  color: #7a7a7a;
+}
+.delete button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #2156bd;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.general {
+  /* width: 100%; */
+  display: flex;
+  gap: 50px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.count {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+.count button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+.price p {
+  width: 131px;
+  text-align: end;
+}
+.products::-webkit-scrollbar {
+  width: 10px;
+}
+.products::-webkit-scrollbar-thumb {
+  background-color: #e5e5e5;
+}
+
+.button {
+  text-align: end;
+  margin-bottom: 30px;
+}
+.button button {
+  width: 350px;
+  height: 50px;
+  background-color: #2156bd;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button button:hover {
+  opacity: 0.9;
 }
