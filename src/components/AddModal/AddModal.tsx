@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
+import { useUser } from "../../store/slices/authSlice";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 interface IProps {
   openModal: boolean;
   setOpenModal: (bool: boolean) => void;
   name: string;
+  available: number;
+  id: number;
 }
-export default function AddModal({ openModal, setOpenModal, name }: IProps) {
+export default function AddModal({
+  openModal,
+  setOpenModal,
+  name,
+  available,
+  id,
+}: IProps) {
   const [count, setCount] = useState(1);
+  const [userError, setUserError] = useState(false);
+  const [availableError, setAvailableError] = useState(false);
+  const user = useUser();
 
   document.onkeydown = (e) => {
     if (e.key === "ArrowLeft") {
@@ -28,6 +42,9 @@ export default function AddModal({ openModal, setOpenModal, name }: IProps) {
       <div onClick={(e) => e.stopPropagation()} className={styles.form}>
         <h1>Добавление в корзину</h1>
         <p>{name}</p>
+
+        {userError && <div style={{ color: "red" }}>Вы не авторизованы</div>}
+        {availableError && <div style={{ color: "red" }}>Нет в наличии</div>}
         <div className={styles.row}>
           Укажите количество:
           <div className={styles.count}>
@@ -45,7 +62,23 @@ export default function AddModal({ openModal, setOpenModal, name }: IProps) {
           </div>
         </div>
         <div>
-          <button onClick={() => {}} className={styles.button}>
+          <button
+            onClick={() => {
+              if (!user) {
+                return setUserError(true);
+              }
+              if (available == 0) {
+                return setAvailableError(true);
+              } else {
+                axios.get(
+                  `https://frost.runtime.kz/api/cart/add?productId=${id}&count=${count}`
+                );
+                setOpenModal(false);
+                toast.success("Добавлено в корзину");
+              }
+            }}
+            className={styles.button}
+          >
             Добавить в корзину
           </button>
           <button className={`${styles.button} ${styles.exit}`}>
