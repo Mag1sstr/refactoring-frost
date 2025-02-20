@@ -42,15 +42,16 @@ export default function BasketStage({
       }
       return p;
     });
-
     setProducts(newArr);
+    axios.get(`https://frost.runtime.kz/api/cart/increase?productId=${id}`);
   }
   function decrease(id: number) {
     const newArr = products.map((p) => {
-      if (p.product.id === id) {
+      if (p.product.id === id && p.count > 1) {
+        axios.get(`https://frost.runtime.kz/api/cart/decrease?productId=${id}`);
         return {
           ...p,
-          count: p.count > 1 ? p.count - 1 : p.count,
+          count: p.count - 1,
         };
       }
       return p;
@@ -59,6 +60,7 @@ export default function BasketStage({
   }
   function deleteProduct(id: number) {
     setProducts(products.filter((c) => c.product.id !== id));
+    axios.get(`https://frost.runtime.kz/api/cart/delete?productId=${id}`);
   }
   function next() {
     setCurrentStage(currentStage + 1);
