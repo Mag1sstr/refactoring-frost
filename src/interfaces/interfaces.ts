@@ -39,7 +39,6 @@ export interface ICommets {
   };
 }
 export interface IBasketPageData {
-  id: number;
   count: number;
   product: {
     name: string;

@@ -4,7 +4,19 @@ import axios from "axios";
 import { IBasketPageData } from "../../interfaces/interfaces";
 import NoProductPage from "../NoProductPage/NoProductPage";
 
-export default function BasketStage() {
+interface IProps {
+  setMainStage: (num: number) => void;
+  setCurrentStage: (num: number) => void;
+  currentStage: number;
+  mainStage: number;
+}
+
+export default function BasketStage({
+  setMainStage,
+  setCurrentStage,
+  currentStage,
+  mainStage,
+}: IProps) {
   const [products, setProducts] = useState<IBasketPageData[]>([]);
   useEffect(() => {
     axios.get("https://frost.runtime.kz/api/cart").then((resp) => {
@@ -20,6 +32,39 @@ export default function BasketStage() {
     return <NoProductPage />;
   }
 
+  function increase(id: number) {
+    const newArr = products.map((p) => {
+      if (p.product.id === id) {
+        return {
+          ...p,
+          count: p.count + 1,
+        };
+      }
+      return p;
+    });
+
+    setProducts(newArr);
+  }
+  function decrease(id: number) {
+    const newArr = products.map((p) => {
+      if (p.product.id === id) {
+        return {
+          ...p,
+          count: p.count > 1 ? p.count - 1 : p.count,
+        };
+      }
+      return p;
+    });
+    setProducts(newArr);
+  }
+  function deleteProduct(id: number) {
+    setProducts(products.filter((c) => c.product.id !== id));
+  }
+  function next() {
+    setCurrentStage(currentStage + 1);
+    setMainStage(mainStage + 1);
+  }
+
   return (
     <>
       <section className={styles.wrapper}>
@@ -33,19 +78,21 @@ export default function BasketStage() {
         </div>
         <div className={styles.products}>
           {products.map((item) => (
-            <div key={item.id} className={styles.item}>
+            <div key={item.product.id} className={styles.item}>
               <div className={styles.name}>
                 <p>{item.product.name}</p>
                 <div className={styles.delete}>
                   <span>Артикул: {item.product.code}</span>
-                  <button>Удалить из корзины</button>
+                  <button onClick={() => deleteProduct(item.product.id)}>
+                    Удалить из корзины
+                  </button>
                 </div>
               </div>
               <div className={styles.general}>
                 <div className={styles.count}>
-                  <button>-</button>
+                  <button onClick={() => decrease(item.product.id)}>-</button>
                   <p>{item.count}</p>
-                  <button>+</button>
+                  <button onClick={() => increase(item.product.id)}>+</button>
                 </div>
                 <div className={styles.price}>
                   <p>{item.product.price * item.count} тг</p>
@@ -54,10 +101,12 @@ export default function BasketStage() {
             </div>
           ))}
         </div>
-        {totalPrice}
+        <div className={styles.total}>
+          Итого к оплате: <span>{totalPrice} тг</span>
+        </div>
       </section>
       <div className={styles.button}>
-        <button>Оформить заказ</button>
+        <button onClick={next}>Оформить заказ</button>
       </div>
     </>
   );

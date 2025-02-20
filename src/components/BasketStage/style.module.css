@@ -23,10 +23,11 @@
 }
 
 .products {
-  max-height: 350px;
+  max-height: 270px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  margin-bottom: 40px;
 }
 .item {
   display: flex;
@@ -105,4 +106,13 @@
 }
 .button button:hover {
   opacity: 0.9;
+}
+
+.total {
+  text-align: end;
+  font-size: 30px;
+  font-weight: 600;
+}
+.total span {
+  margin-left: 30px;
 }

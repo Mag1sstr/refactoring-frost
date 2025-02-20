@@ -5,10 +5,18 @@ import ContactsStage from "../../components/ContactsStage/ContactsStage";
 
 export default function Basket() {
   const [currentStage, setCurrentStage] = useState(0);
+  const [mainStage, setMainStage] = useState(0);
   const stages = [
     {
       stage: "Корзина",
-      component: <BasketStage />,
+      component: (
+        <BasketStage
+          currentStage={currentStage}
+          setCurrentStage={setCurrentStage}
+          mainStage={mainStage}
+          setMainStage={setMainStage}
+        />
+      ),
     },
     {
       stage: "Контактные данные",
@@ -21,6 +29,7 @@ export default function Basket() {
       stage: "Завершение",
     },
   ];
+
   return (
     <section className={styles.order}>
       <div className="conteiner">
@@ -31,7 +40,9 @@ export default function Basket() {
               <div
                 key={item.stage}
                 onClick={() => {
-                  setCurrentStage(i);
+                  if (i < mainStage) {
+                    setCurrentStage(i);
+                  }
                 }}
                 className={`${styles.stage} ${
                   currentStage === i && styles.active
@@ -44,7 +55,7 @@ export default function Basket() {
         </div>
         <div>
           {stages.map((item, i) => (
-            <div>{i === currentStage && item.component}</div>
+            <div key={item.stage}>{i === currentStage && item.component}</div>
           ))}
         </div>
       </div>
