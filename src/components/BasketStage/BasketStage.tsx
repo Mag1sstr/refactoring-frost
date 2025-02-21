@@ -18,6 +18,7 @@ export default function BasketStage({
   mainStage,
 }: IProps) {
   const [products, setProducts] = useState<IBasketPageData[]>([]);
+
   useEffect(() => {
     axios.get("https://frost.runtime.kz/api/cart").then((resp) => {
       setProducts(resp.data.items);
@@ -64,7 +65,7 @@ export default function BasketStage({
   }
   function next() {
     setCurrentStage(currentStage + 1);
-    setMainStage(mainStage + 1);
+    setMainStage(2);
   }
 
   return (

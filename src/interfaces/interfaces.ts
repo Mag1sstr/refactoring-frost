@@ -47,3 +47,11 @@ export interface IBasketPageData {
     id: number;
   };
 }
+
+export interface IContactsValue {
+  name?: string;
+  surname?: string;
+  patronymic: string;
+  tel: string;
+  email?: string;
+}

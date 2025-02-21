@@ -2,10 +2,22 @@ import { useState } from "react";
 import styles from "./style.module.css";
 import BasketStage from "../../components/BasketStage/BasketStage";
 import ContactsStage from "../../components/ContactsStage/ContactsStage";
+import { IContactsValue } from "../../interfaces/interfaces";
+import { useUser } from "../../store/slices/authSlice";
+import DeliveryStage from "../../components/DeliveryStage/DeliveryStage";
 
 export default function Basket() {
+  const user = useUser();
   const [currentStage, setCurrentStage] = useState(0);
   const [mainStage, setMainStage] = useState(0);
+  const [contactsValue, setContactsValue] = useState<IContactsValue>({
+    name: user ? user.firstName : "",
+    surname: user ? user.lastName : "",
+    patronymic: "",
+    tel: "",
+    email: user ? user.email : "",
+  });
+
   const stages = [
     {
       stage: "Корзина",
@@ -20,10 +32,20 @@ export default function Basket() {
     },
     {
       stage: "Контактные данные",
-      component: <ContactsStage />,
+      component: (
+        <ContactsStage
+          contactsValue={contactsValue}
+          setContactsValue={setContactsValue}
+          currentStage={currentStage}
+          setCurrentStage={setCurrentStage}
+          mainStage={mainStage}
+          setMainStage={setMainStage}
+        />
+      ),
     },
     {
       stage: "Доставка",
+      component: <DeliveryStage />,
     },
     {
       stage: "Завершение",
