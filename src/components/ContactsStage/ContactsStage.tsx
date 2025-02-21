@@ -1,5 +1,10 @@
+import {
+  isValidPhoneNumber,
+  parsePhoneNumberWithError,
+} from "libphonenumber-js";
 import { IContactsValue } from "../../interfaces/interfaces";
 import styles from "./style.module.css";
+import { useState } from "react";
 
 interface IProps {
   setMainStage: (num: number) => void;
@@ -10,6 +15,9 @@ interface IProps {
   setContactsValue: (v: IContactsValue) => void;
 }
 
+const EMAIL_REGEXP =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
 export default function ContactsStage({
   mainStage,
   currentStage,
@@ -18,17 +26,36 @@ export default function ContactsStage({
   contactsValue,
   setContactsValue,
 }: IProps) {
+  const [emailError, setEmailError] = useState(false);
   function next() {
     if (
       contactsValue.name?.length &&
       contactsValue.surname?.length &&
       contactsValue.patronymic.length &&
       contactsValue.tel.length &&
-      contactsValue.email?.length
+      contactsValue.email?.length &&
+      !emailError
     ) {
       setCurrentStage(currentStage + 1);
       setMainStage(mainStage + 1);
     }
+  }
+
+  function convertPhoneNumber(tel: string) {
+    if (isValidPhoneNumber(tel, "RU")) {
+      const phone = parsePhoneNumberWithError(tel, "RU");
+      return phone.formatNational();
+    }
+    return tel;
+  }
+
+  function isEmailValid(value: string) {
+    if (!EMAIL_REGEXP.test(value)) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+    return value;
   }
   return (
     <>
@@ -83,7 +110,7 @@ export default function ContactsStage({
                   if (Number(e.target.value)) {
                     setContactsValue({
                       ...contactsValue,
-                      tel: e.target.value,
+                      tel: convertPhoneNumber(e.target.value),
                     });
                   } else {
                     setContactsValue({
@@ -100,13 +127,16 @@ export default function ContactsStage({
           <div className={styles.line}></div>
           <div className={styles.col}>
             <div className={styles.input}>
+              {emailError && (
+                <div style={{ color: "red" }}>Некорректный email</div>
+              )}
               E-mail
               <input
                 value={contactsValue.email}
                 onChange={(e) => {
                   setContactsValue({
                     ...contactsValue,
-                    email: e.target.value,
+                    email: isEmailValid(e.target.value),
                   });
                 }}
                 type="text"
