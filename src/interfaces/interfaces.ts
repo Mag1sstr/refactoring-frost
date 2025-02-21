@@ -55,3 +55,11 @@ export interface IContactsValue {
   tel: string;
   email?: string;
 }
+
+export interface IDeliveryValue {
+  house: string;
+  street: string;
+  city: string;
+  apartment: string;
+  region: string;
+}

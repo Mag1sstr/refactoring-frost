@@ -2,9 +2,10 @@ import { useState } from "react";
 import styles from "./style.module.css";
 import BasketStage from "../../components/BasketStage/BasketStage";
 import ContactsStage from "../../components/ContactsStage/ContactsStage";
-import { IContactsValue } from "../../interfaces/interfaces";
+import { IContactsValue, IDeliveryValue } from "../../interfaces/interfaces";
 import { useUser } from "../../store/slices/authSlice";
 import DeliveryStage from "../../components/DeliveryStage/DeliveryStage";
+import CompletionStage from "../../components/CompletionStage/CompletionStage";
 
 export default function Basket() {
   const user = useUser();
@@ -17,6 +18,14 @@ export default function Basket() {
     tel: "",
     email: user ? user.email : "",
   });
+  const [deliveryValue, setDeliveryValue] = useState<IDeliveryValue>({
+    region: "",
+    city: "",
+    street: "",
+    house: "",
+    apartment: "",
+  });
+  const [orderNumber, setOrderNumber] = useState<number | null>(null);
 
   const stages = [
     {
@@ -45,10 +54,22 @@ export default function Basket() {
     },
     {
       stage: "Доставка",
-      component: <DeliveryStage />,
+      component: (
+        <DeliveryStage
+          deliveryValue={deliveryValue}
+          setDeliveryValue={setDeliveryValue}
+          currentStage={currentStage}
+          setCurrentStage={setCurrentStage}
+          mainStage={mainStage}
+          setMainStage={setMainStage}
+          tel={contactsValue.tel}
+          setOrderNumber={setOrderNumber}
+        />
+      ),
     },
     {
       stage: "Завершение",
+      component: <CompletionStage orderNumber={orderNumber} />,
     },
   ];
 
