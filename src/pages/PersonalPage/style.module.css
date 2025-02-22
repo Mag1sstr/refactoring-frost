@@ -1,0 +1,37 @@
+.personal {
+  margin-bottom: 150px;
+}
+.title {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-size: 36px;
+  font-weight: 400;
+}
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.left {
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 65px 40px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+}
+.left__item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a2749;
+  cursor: pointer;
+}
+
+.active {
+  color: #2156bd;
+}

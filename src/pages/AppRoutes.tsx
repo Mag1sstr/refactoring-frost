@@ -3,6 +3,7 @@ import Home from "./Home";
 import ProductInfo from "./ProductInfo/ProductInfo";
 import SearchPage from "./SearchPage/SearchPage";
 import CreatingOrder from "./CreatingOrder/CreatingOrder";
+import PersonalPage from "./PersonalPage/PersonalPage";
 
 export default function AppRoutes() {
   return (
@@ -12,6 +13,7 @@ export default function AppRoutes() {
         <Route path="/product/:id" element={<ProductInfo />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/basket" element={<CreatingOrder />} />
+        <Route path="/personal" element={<PersonalPage />} />
       </Routes>
     </>
   );

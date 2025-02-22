@@ -63,3 +63,20 @@ export interface IDeliveryValue {
   apartment: string;
   region: string;
 }
+
+interface IOrdersItems {
+  count: number;
+  product: {
+    price: number;
+    name: string;
+  };
+}
+export interface IOrdersData {
+  items: IOrdersItems[];
+  product: {
+    price: number;
+    count: number;
+  };
+  id: number;
+  created_at: number;
+}
