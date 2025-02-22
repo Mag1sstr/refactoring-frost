@@ -25,9 +25,11 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
-      <ToastContainer />
-      <AppRoutes />
+      <div>
+        <Header />
+        <ToastContainer />
+        <AppRoutes />
+      </div>
       <Footer />
     </div>
   );
