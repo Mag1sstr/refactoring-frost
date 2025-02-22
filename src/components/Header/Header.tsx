@@ -41,7 +41,9 @@ export default function Header() {
           <Search />
           {user ? (
             <div className={styles.auth}>
-              <a>{`${user.firstName} ${user.lastName} (${user.email})`}</a>
+              <a
+                onClick={() => navigate("/personal")}
+              >{`${user.firstName} ${user.lastName} (${user.email})`}</a>
               <a
                 onClick={() => {
                   localStorage.setItem("token", "null");
