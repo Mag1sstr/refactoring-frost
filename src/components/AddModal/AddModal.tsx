@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./style.module.css";
 import { useUser } from "../../store/slices/authSlice";
 import axios from "axios";
