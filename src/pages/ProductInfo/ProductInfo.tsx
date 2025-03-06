@@ -11,22 +11,37 @@ import axios from "axios";
 import { IProduct } from "../../interfaces/interfaces";
 import Spinner from "../../components/Spinner/Spinner";
 import Comments from "../../components/Comments/Comments";
+import AddModal from "../../components/AddModal/AddModal";
 
 const imageData = [image1, image2, image3, image4];
 export default function ProductInfo() {
   const [product, setProduct] = useState<IProduct | null>(null);
   const [currImage, setCurrImage] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     axios.get(`https://frost.runtime.kz/api/products/${id}`).then((resp) => {
       setProduct(resp.data);
     });
   }, [id]);
+
+  function handleClick() {
+    setOpenModal(true);
+  }
+
   if (!product) {
     return <Spinner />;
   }
+
   return (
     <section className={styles.product__info}>
+      <AddModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        name={product.name}
+        available={product.available}
+        id={product.id}
+      />
       <div className="conteiner">
         <div className={styles.row}>
           <div className={styles.left}>
@@ -87,12 +102,7 @@ export default function ProductInfo() {
                   <p>г. Астана</p>
                   <p>г. Алматы</p>
                 </div>
-                <button
-                  onClick={() => {
-                    location.reload();
-                  }}
-                  className={styles.button}
-                >
+                <button onClick={handleClick} className={styles.button}>
                   Купить
                 </button>
               </div>
