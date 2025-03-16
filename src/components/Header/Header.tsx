@@ -9,6 +9,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { setUser, useUser } from "../../store/slices/authSlice";
 import { useAppDispatch } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const [openReg, setOpenReg] = useState(false);
@@ -16,6 +17,7 @@ export default function Header() {
   const navigate = useNavigate();
   const user = useUser();
   const dispatch = useAppDispatch();
+  const { t, i18n } = useTranslation();
 
   return (
     <header className={styles.header}>
