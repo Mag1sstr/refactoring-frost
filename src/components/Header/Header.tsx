@@ -15,16 +15,10 @@ import Language from "../Language/Language";
 export default function Header() {
   const [openReg, setOpenReg] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState("EN");
 
   const navigate = useNavigate();
   const user = useUser();
   const dispatch = useAppDispatch();
-  const { t, i18n } = useTranslation();
-
-  function changeLanguage(language: string) {
-    i18n.changeLanguage(language);
-  }
 
   return (
     <header className={styles.header}>
@@ -68,11 +62,7 @@ export default function Header() {
               <a onClick={() => setOpenReg(true)}>Зарегистрироваться</a>
             </div>
           )}
-          <Language
-            currentLanguage={currentLanguage}
-            setCurrentLanguage={setCurrentLanguage}
-            changeLanguage={changeLanguage}
-          />
+          <Language />
           <Cart />
         </div>
       </div>

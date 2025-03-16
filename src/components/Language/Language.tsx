@@ -1,25 +1,23 @@
 import { useState } from "react";
 import styles from "./style.module.css";
+import { useTranslation } from "react-i18next";
 
-interface IProps {
-  currentLanguage: string;
-  setCurrentLanguage: (lang: string) => void;
-  changeLanguage: (lang: string) => void;
-}
-export default function Language({
-  currentLanguage,
-  setCurrentLanguage,
-  changeLanguage,
-}: IProps) {
+export default function Language() {
+  const [currentLanguage, setCurrentLanguage] = useState("ru");
+  const { i18n } = useTranslation();
+
+  function changeLanguage(language: string) {
+    i18n.changeLanguage(language);
+    setCurrentLanguage(currentLanguage === "en" ? "ru" : "en");
+  }
   return (
     <div
       onClick={() => {
-        changeLanguage(currentLanguage === "EN" ? "RU" : "EN");
-        setCurrentLanguage(currentLanguage === "EN" ? "RU" : "EN");
+        changeLanguage(currentLanguage === "ru" ? "en" : "ru");
       }}
       className={styles.lang}
     >
-      {currentLanguage}
+      {currentLanguage.toUpperCase()}
     </div>
   );
 }

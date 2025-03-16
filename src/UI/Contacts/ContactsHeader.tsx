@@ -1,9 +1,11 @@
+import { useTranslation } from "react-i18next";
 import styles from "../../components/Header/style.module.css";
 export default function ContactsHeader() {
+  const { t } = useTranslation();
   return (
     <div className={styles.contacts}>
       <div className={styles.city}>
-        <p>г. Астана</p>
+        <p>{t("astana")}</p>
         <p>г. Алматы</p>
       </div>
       <div className={styles.number}>
