@@ -6,7 +6,7 @@ export default function ContactsHeader() {
     <div className={styles.contacts}>
       <div className={styles.city}>
         <p>{t("astana")}</p>
-        <p>г. Алматы</p>
+        <p>{t("almaty")}</p>
       </div>
       <div className={styles.number}>
         <p>+7 777 777 77 77</p>

@@ -20,6 +20,8 @@ export default function Header() {
   const user = useUser();
   const dispatch = useAppDispatch();
 
+  const { t } = useTranslation();
+
   return (
     <header className={styles.header}>
       <RegisterModal
@@ -58,8 +60,8 @@ export default function Header() {
             </div>
           ) : (
             <div className={styles.auth}>
-              <a onClick={() => setOpenLogin(true)}>Вход в личный кабинет</a>
-              <a onClick={() => setOpenReg(true)}>Зарегистрироваться</a>
+              <a onClick={() => setOpenLogin(true)}>{t("signin")}</a>
+              <a onClick={() => setOpenReg(true)}>{t("reg")}</a>
             </div>
           )}
           <Language />
