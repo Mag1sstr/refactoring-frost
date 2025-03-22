@@ -10,6 +10,7 @@ import {
   handleModelChange,
   IFilter,
 } from "../../store/slices/filterSlice";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setAvailable: (num: number) => void;
@@ -35,13 +36,19 @@ export default function Categories({
     dispatch(getBrandData());
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <section className={styles.categories}>
       <div className={styles.row}>
-        <DropdownCategory name="Категория" title="Все категории" items={[]} />
         <DropdownCategory
-          name="Марка"
-          title="Все марки"
+          name={t("category")}
+          title={t("all_categories")}
+          items={[]}
+        />
+        <DropdownCategory
+          name={t("brand")}
+          title={t("all_brands")}
           items={brandData}
           onChange={(id) => {
             setCurrentPage(1);
@@ -50,8 +57,8 @@ export default function Categories({
           }}
         />
         <DropdownCategory
-          name="Модель"
-          title="Все модели"
+          name={t("model")}
+          title={t("all_models")}
           items={modelsData}
           onChange={(id) => {
             setCurrentPage(1);
@@ -60,8 +67,8 @@ export default function Categories({
           }}
         />
         <DropdownCategory
-          name="Поколение"
-          title="Все поколения"
+          name={t("generetions")}
+          title={t("all_generations")}
           items={generationData}
           onChange={(id) => {
             setCurrentPage(1);

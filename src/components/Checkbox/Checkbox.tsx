@@ -1,5 +1,6 @@
 import styles from "./style.module.css";
 import checkImage from "../../images/Categories/check.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   active: boolean;
@@ -7,6 +8,8 @@ interface IProps {
   setAvailable: (prev: any) => void;
 }
 export default function Checkbox({ active, setActive, setAvailable }: IProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.checkbox}>
       <div
@@ -18,7 +21,7 @@ export default function Checkbox({ active, setActive, setAvailable }: IProps) {
       >
         <img className={styles.check} src={checkImage} alt="" />
       </div>
-      в наличии
+      {t("stock")}
     </div>
   );
 }

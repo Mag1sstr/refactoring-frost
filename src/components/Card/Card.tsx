@@ -3,6 +3,7 @@ import stubImage from "../../images/stub.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import AddModal from "../AddModal/AddModal";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   id: number;
@@ -12,6 +13,7 @@ interface IProps {
 }
 export default function Card({ name, price, id, available }: IProps) {
   const [openModal, setOpenModal] = useState(false);
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
       <AddModal
@@ -30,7 +32,7 @@ export default function Card({ name, price, id, available }: IProps) {
       <div className={styles.card__row}>
         <p className={styles.card__price}>{price} тг</p>
         <button onClick={() => setOpenModal(true)} className={styles.card__btn}>
-          Купить
+          {t("buy")}
         </button>
       </div>
     </div>

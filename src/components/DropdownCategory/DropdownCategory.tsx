@@ -22,7 +22,7 @@ export default function DropdownCategory({
   useEffect(() => {
     setData([{ id: "all", name: title }, ...items]);
     setCategory(title);
-  }, [items]);
+  }, [items, title]);
   function openToggle() {
     setOpen(!open);
   }
