@@ -28,7 +28,7 @@ export default function Orders() {
       <div className={styles.column}>
         {orders.map((item) => {
           let totalSum = 0;
-          for (let el of item.items) {
+          for (const el of item.items) {
             totalSum += el.product.price * el.count;
           }
           return (

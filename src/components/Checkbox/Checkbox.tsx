@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 interface IProps {
   active: boolean;
   setActive: (bool: boolean) => void;
-  setAvailable: (prev: any) => void;
+  setAvailable: (prev: (p: number) => number) => void;
 }
 export default function Checkbox({ active, setActive, setAvailable }: IProps) {
   const { t } = useTranslation();

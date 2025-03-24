@@ -15,8 +15,8 @@ export default function BasketStage({
   setMainStage,
   setCurrentStage,
   currentStage,
-  mainStage,
-}: IProps) {
+}: // mainStage,
+IProps) {
   const [products, setProducts] = useState<IBasketPageData[]>([]);
 
   useEffect(() => {
