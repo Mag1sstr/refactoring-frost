@@ -13,7 +13,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 interface IProps {
-  setAvailable: (num: number) => void;
+  setAvailable: (prev: (p: number) => number) => void;
   setGenerationId: (id: number | string | null) => void;
   setBrandId: (id: number | string | null) => void;
   setModelId: (id: number | string | null) => void;
@@ -34,7 +34,7 @@ export default function Categories({
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getBrandData());
-  }, []);
+  }, [dispatch]);
 
   const { t } = useTranslation();
 

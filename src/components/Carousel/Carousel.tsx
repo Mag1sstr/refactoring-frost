@@ -16,7 +16,7 @@ export default function Carousel({ children }: IProps) {
   useEffect(() => {
     const count = Children.map(children, (_, i) => i);
     setPages(count!.length);
-  }, []);
+  }, [children]);
 
   function arrowLeftClick() {
     if (offset < 0) {
