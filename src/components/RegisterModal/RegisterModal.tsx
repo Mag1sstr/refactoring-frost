@@ -24,10 +24,10 @@ export default function RegisterModal({
 
   return (
     <div
-      onClick={() => setOpenReg(false)}
+      onMouseDown={() => setOpenReg(false)}
       className={`${styles.modal} ${openReg && styles.open__modal}`}
     >
-      <div onClick={(e) => e.stopPropagation()} className={styles.form}>
+      <div onMouseDown={(e) => e.stopPropagation()} className={styles.form}>
         <div>
           <h1>Создание учётной записи</h1>
           <div className={styles.row}>
