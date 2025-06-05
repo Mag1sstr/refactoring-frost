@@ -24,10 +24,10 @@ export default function LoginModal({
 
   return (
     <div
-      onClick={() => setOpenLogin(false)}
+      onMouseDown={() => setOpenLogin(false)}
       className={`${styles.modal} ${openLogin && styles.open__modal}`}
     >
-      <div onClick={(e) => e.stopPropagation()} className={styles.form}>
+      <div onMouseDown={(e) => e.stopPropagation()} className={styles.form}>
         <div>
           <h1>Вход в учётную запись</h1>
           {error && <div style={{ color: "red" }}>Неверные данные</div>}
