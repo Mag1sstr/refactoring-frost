@@ -8,8 +8,8 @@ export default function Slider() {
   return (
     <Carousel>
       <img src={banner1} className={styles.image} alt="" />
-      <img src={banner2} alt="" />
-      <img src={banner3} alt="" />
+      <img src={banner2} className={styles.image} alt="" />
+      <img src={banner3} className={styles.image} alt="" />
     </Carousel>
   );
 }
